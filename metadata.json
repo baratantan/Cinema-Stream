@@ -1,0 +1,6 @@
+{
+  "name": "Cinema Stream",
+  "description": "A professional Movies and TV Shows streaming platform with Arabic subtitles, genre filtering, and automated scraping.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
