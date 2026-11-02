@@ -33,7 +33,6 @@ jobs:
             echo "$GS_JSON" > app/google-services.json
           else
             PKG=$(grep -oP 'applicationId\s*=\s*"\K[^"]+' app/build.gradle.kts | head -1)
-            echo "Using placeholder for package: $PKG"
             cat > app/google-services.json <<EOF
           {
             "project_info": {
@@ -56,7 +55,9 @@ jobs:
           fi
 
       - name: Create .env
-        run: echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
+        env:
+          GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: echo "GEMINI_API_KEY=${GEMINI_KEY:-PLACEHOLDER}" > .env
 
       - run: gradle assembleDebug --console=plain
 
